@@ -84,10 +84,10 @@ Code::Blocks (IDE), MySQL (SGBD), GTK+ (interface), GCC (compilateur), GDB (déb
 
 ## Auteurs
 
-- Chaymae El Bahloul
+- Boudallaa Samah
+- El Bahloul Chaymae
 - Khadija El Basri
-- Samah Boudallaa
-- Khadija Rizqy
 - Yassamine Obba
+- Khadija Rizqy
 
 Encadrant : Pr. Hakim El Massari
