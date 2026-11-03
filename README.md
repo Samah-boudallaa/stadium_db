@@ -47,7 +47,7 @@ Champs gérés : nom, prénom, CNE, date de naissance, ville, adresse, compte ac
 - **MySQL** ou **MariaDB** (serveur + bibliothèque cliente de développement)
 - `make` et `pkg-config`
 
-Installation sous Debian/Ubuntu :
+### Linux (Debian/Ubuntu)
 
 ```bash
 sudo apt install build-essential pkg-config libgtk-3-dev libmysqlclient-dev mysql-server
@@ -55,13 +55,15 @@ sudo apt install build-essential pkg-config libgtk-3-dev libmysqlclient-dev mysq
 
 > Sur les versions de Debian qui n'offrent pas `libmysqlclient-dev`, installez `libmariadb-dev` à la place.
 
-Sous Windows, utilisez MSYS2 :
+### Windows
+
+Avec **MSYS2** :
 
 ```bash
 pacman -S mingw-w64-x86_64-gtk3 mingw-w64-x86_64-libmariadbclient
 ```
 
-ou l'environnement Code::Blocks avec GTK+ configuré.
+Ou avec l'environnement **Code::Blocks** configuré avec GTK+.
 
 ## Installation
 
@@ -88,13 +90,20 @@ La connexion à la base se règle par variables d'environnement (valeurs par dé
 | `DB_PASSWORD` | Mot de passe (vide) |
 | `DB_NAME` | Nom de la base (`studium_db`) |
 
-Exemple :
+Exemple en une seule commande :
 
 ```bash
 DB_USER=etu DB_PASSWORD=secret ./studium_db_app
 ```
 
-Un modèle est fourni dans `.env.example`.
+Un modèle est fourni dans `.env.example`. Pour l'utiliser sous Linux :
+
+```bash
+cp .env.example .env
+# éditez .env avec vos identifiants, puis :
+set -a && source .env && set +a
+./studium_db_app
+```
 
 > **Sécurité** : ne commitez jamais vos vrais identifiants. Vérifiez que `.env` figure dans votre `.gitignore`.
 
@@ -116,6 +125,7 @@ studium-db/
 ├── schema.sql        # Création de la base et de la table students
 ├── Makefile          # Compilation
 ├── .env.example      # Modèle de configuration
+├── .gitignore        # Fichiers exclus du dépôt (dont .env)
 ├── LICENSE           # Licence MIT
 └── README.md
 ```
@@ -132,13 +142,27 @@ studium-db/
 
 ## Limites et perspectives
 
+**Limites actuelles**
+
 - Pas de système d'authentification des utilisateurs de l'application.
-- Utilisation de requêtes préparées (`mysql_stmt_*`) recommandée pour toutes les opérations, afin de se prémunir contre les injections SQL.
-- Pistes d'évolution : export CSV/PDF, tri et pagination de la liste, validation des formats (CNE, dates), gestion des notes et des absences.
+- Les requêtes préparées (`mysql_stmt_*`) sont recommandées pour toutes les opérations, afin de se prémunir contre les injections SQL.
+
+**Pistes d'évolution**
+
+- Export CSV/PDF
+- Tri et pagination de la liste
+- Validation des formats (CNE, dates)
+- Gestion des notes et des absences
 
 ## Outils utilisés
 
-Code::Blocks (IDE), MySQL (SGBD), GTK+ (interface), GCC (compilateur), GDB (débogueur).
+| Outil | Rôle |
+|---|---|
+| Code::Blocks | IDE |
+| MySQL | SGBD |
+| GTK+ | Interface graphique |
+| GCC | Compilateur |
+| GDB | Débogueur |
 
 ## Licence
 
@@ -146,10 +170,12 @@ Ce projet est distribué sous licence **MIT**. Voir le fichier [LICENSE](LICENSE
 
 ## Auteurs
 
-- BOUDALLAA Samah
-- EL BAHLOUL Chaymae
-- EL BASRI Khadija
-- OBBA Yassamine
-- RIZQY Khadija
+| Nom | Profil GitHub |
+|---|---|
+| BOUDALLAA Samah | [Samah-boudallaa](https://github.com/Samah-boudallaa) |
+| EL BAHLOUL Chaymae | [Chaymae-El-Bahloul](https://github.com/Chaymae-El-Bahloul) |
+| EL BASRI Khadija | [KhadijaElBasri](https://github.com/KhadijaElBasri) |
+| OBBA Yassamine | [Yassamine-OBBA](https://github.com/Yassamine-OBBA) |
+| RIZQY Khadija | [khadija-rizqy](https://github.com/khadija-rizqy) |
 
 **Encadrant** : Pr. Hakim El Massari
